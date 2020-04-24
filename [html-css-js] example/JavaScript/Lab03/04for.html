@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>04for.html</title>
+</head>
+<body>
+    <script>
+   
+        // for (let i = 1; i < 10; i++){
+        //     for (let j = 1; j < 10; j++){
+        //         document.write(`${i} * ${j} = ${i*j} <br>`);
+        //     }
+        // }
+    
+        let person={name:"Jack", ID:"A123456789", age:35};
+        for(let prop in person){
+            console.log(`person[${prop}] = ${person[prop]}`);
+        }
+
+        let data = ["beef", "pork", "chicken"];
+        for (let i of data) {
+            console.log(`data[${data.indexOf(i)}] = ${i}`);
+        }
+
+    </script>
+</body>
+</html>

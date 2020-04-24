@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="iddiv">
+        div
+        <p id="idp">ppppp</p>
+    </div>
+
+    <script>
+        document.onclick=fdoc;
+        document.getElementById("iddiv").onclick=fdiv;
+        document.getElementById("idp").onclick=fp;
+
+        function fdoc(){
+            alert("document");
+        }
+        function fdiv(){
+            alert("div");
+            event.stopPropagation();
+        }
+
+        function fp(){
+            alert("ppp");
+        }
+    </script>
+</body>
+</html>

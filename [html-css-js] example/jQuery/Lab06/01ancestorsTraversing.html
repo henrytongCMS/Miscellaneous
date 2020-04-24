@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <title>01ancestorsTraversing.html</title>
+    <style>
+        .level-1 * { 
+            display: block;
+            border: 2px solid lightgrey;
+            color: lightgrey;
+            padding: 5px;
+            margin: 15px;
+        }
+        ul .item-ii{
+            border:2px dotted orchid;
+        }
+    </style>
+    <script src="../js/jquery-3.4.1.min.js"></script>
+    <script>
+        $(function(){
+            $("#btn1").click(function(){
+                $( "ul .item-ii" ).parent().css( "border", "solid 2px red" );                             
+            });
+
+            $("#btn2").click(function(){                
+                $( "ul .item-ii" ).parents().css( "border", "solid 2px green" ); 
+                // $( "ul .item-ii" ).parents("ul").css( "border", "solid 2px green" );              
+            });
+
+            $("#btn3").click(function(){               
+                $( "ul .item-ii" ).parentsUntil('body').css( "border", "solid 2px blue" );
+            });           
+        });
+    </script>
+
+</head>
+<body>body(grandparent)
+    <ul class="level-1" style="width:500px" >ul(direct parent)
+        <li class="item-i">I</li>
+        <li class="item-ii">II(self)
+          <ul class="level-2">ul
+            <li class="item-a">A</li>
+            <li class="item-b">B
+                <ul class="level-3">
+                    <li class="item-1">1</li>
+                  </ul>
+            </li>
+            <li class="item-c">C</li>
+          </ul>
+        </li>       
+      </ul>
+      <hr>
+      <input type="button" id="btn1" value="parent()">
+    <input type="button" id="btn2" value="parents()">
+    <input type="button" id="btn3" value="parentsUntil()"> 
+</html>

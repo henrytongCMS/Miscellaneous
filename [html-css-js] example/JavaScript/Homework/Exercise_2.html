@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercise_2.html</title>
+    <style>
+        fieldset{
+            width: 500px;
+            margin: 15px;
+            border: 1px solid #acd6ff;
+            border-radius: 15px;
+        }
+        span{
+            font-size: x-small;
+            color: grey;
+        }
+        .general{
+            width: 450px;
+            margin: 20px;
+            border-bottom: 1px solid lightgrey;
+            padding-bottom: 10px;
+        }
+        .submit{
+            width: 450px;
+            margin: 20px;
+            font-size: larger;
+            text-align: center;
+        }
+        .title{
+            width: 40px;
+            float: left;
+            text-align: left;
+            margin-right: 12px;
+        }
+    </style>
+</head>
+<body>
+    <form action="#" method="get" enctype="multipart/form-data">
+        <fieldset>
+            <legend>
+                Form Check
+            </legend>
+            <div class="general">
+                <label class="title"> 姓名: </label>
+                <input type="text" id="myname" name="myname" placeholder="王建明" autocomplete="off">
+                <span id="spname"></span>
+                <br><span>(1.不可空白 2.至少兩個字以上 3.必須全部為中文字)</span>
+            </div>
+            <div class="general">
+                <label class="title"> 密碼: </label>
+                <input type="password" id="mypasswd" name="mypasswd" placeholder="請輸入密碼">
+                <span id="sppasswd"></span>
+                <br><span>(1.不可空白 2.至少需6個字元且必須包含英文字母,數字,特殊字元)</span>
+            </div>
+            <div class="general">
+                <label class="title"> 日期: </label>
+                <input type="text" id="mydate" name="mydate" placeholder="ex: 2019/01/01" autocomplete="off">
+                <span id="spdate"></span>
+                <br><span>(格式: 西元年/月/日 yyyy/MM/dd)</span>
+            </div>
+        </fieldset>
+        <div class="submit">
+            <input type="submit" value="送出">
+            <input type="reset" value="清除">
+        </div>
+    </form>
+
+    <script>
+
+        document.getElementById("myname").onblur = checkName;
+        document.getElementById("mypasswd").onblur = checkPasswd;
+        document.getElementById("mydate").onblur = checkDate;
+
+        function checkName(){
+
+            let myname = document.getElementById("myname");
+            let isCn = false;
+
+            if( myname.value == "" )
+                document.getElementById("spname").innerHTML = "<img src='Images/error.png'> 名字不可為空白!";
+
+            else if( myname.value.length >= 2 ){
+
+                for( i=0; i<myname.value.length; i++ ){
+
+                    let ichar = myname.value.charCodeAt(i);
+
+                    // check wether is chinese character or not
+                    if( ichar >= 0x4E00 && ichar <= 0x9FFF )
+                        isCn = true;
+
+                    else{
+                        isCn = false;
+                        document.getElementById("spname").innerHTML = "<img src='Images/error.png'> 請輸入中文名字!";
+                        break;
+
+                    }
+                }
+
+                if( isCn ) 
+                    document.getElementById("spname").innerHTML = "<img src='Images/correct.png'> 格式正確!";
+
+            }
+
+            else
+                document.getElementById("spname").innerHTML = "<img src='Images/error.png'> 名字至少需2個字!";  
+                      
+        }
+
+        function checkPasswd(){
+
+            let mypasswd = document.getElementById("mypasswd");
+            let isAlp = false;
+            let isNum = false;
+            let isSpc = false;
+
+            if( mypasswd.value == "" )
+                document.getElementById("sppasswd").innerHTML = "<img src='Images/error.png'> 密碼不可為空白!";
+            
+            else if( mypasswd.value.length >= 6 ){
+
+                for( i=0; i<mypasswd.value.length; i++ ){
+                    
+                    let ipwdChar = mypasswd.value.charCodeAt(i);
+
+                    if((ipwdChar >= 0x0041 && ipwdChar <= 0x005A) || (ipwdChar >= 0x0061 && ipwdChar <= 0x007A)) //A-Za-z
+                        isAlp = true;
+
+                    else if(ipwdChar >= 0x0030 && ipwdChar <= 0x0039) //0-9
+                        isNum = true;
+
+                    else if((ipwdChar >= 0x0021 && ipwdChar <= 0x002F) || 
+                            (ipwdChar >= 0x003A && ipwdChar <= 0x0040) ||
+                            (ipwdChar >= 0x005B && ipwdChar <= 0x0060) || 
+                            (ipwdChar >= 0x007B && ipwdChar <= 0x007E)) //Special Characters
+                        isSpc = true;
+
+                    if( isAlp && isNum && isSpc ) break;
+
+                }
+
+                if( isAlp && isNum && isSpc ) 
+                    document.getElementById("sppasswd").innerHTML = "<img src='Images/correct.png'> 格式正確!";
+                else 
+                    document.getElementById("sppasswd").innerHTML = "<img src='Images/error.png'> 密碼需包含英文字母,數字,特殊字元!";
+
+            }
+
+            else 
+                document.getElementById("sppasswd").innerHTML = "<img src='Images/error.png'> 密碼至少需6個字元!";
+
+        }
+    
+        function checkDate(){
+
+            let mydate = document.getElementById("mydate").value;
+
+            // Parse the date parts to integers
+            var year = parseInt(mydate.split("/")[0]);
+            var month = parseInt(mydate.split("/")[1]);
+            var day = parseInt(mydate.split("/")[2]);
+
+            var monthLength = [ 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 ];
+
+            if( mydate == "" )
+                document.getElementById("spdate").innerHTML = "<img src='Images/error.png'> 日期不可為空白!";
+
+            // Check the pattern
+            else if( !/^\d{4}\/\d{1,2}\/\d{1,2}$/.test(mydate) )
+                document.getElementById("spdate").innerHTML = "<img src='Images/error.png'> 日期格式不正確!";
+
+            // Check the ranges of month and year
+            else if( year < 1000 || year > 3000 || month == 0 || month > 12 )
+                document.getElementById("spdate").innerHTML = "<img src='Images/error.png'> 日期格式不正確!";
+
+            // Check the ranges of day
+            else if( (day <= 0 || day > monthLength[month-1]) )
+                document.getElementById("spdate").innerHTML = "<img src='Images/error.png'> 日期格式不正確!";
+
+            // Check the leap year
+            else if( month == 2 && !(year % 400 == 0 || (year % 100 != 0 && year % 4 == 0)) && day > 28 )
+                document.getElementById("spdate").innerHTML = "<img src='Images/error.png'> 日期格式不正確!";
+
+            else 
+                document.getElementById("spdate").innerHTML = "<img src='Images/correct.png'> 格式正確!";
+            
+        }
+
+    </script>
+</body>
+</html>

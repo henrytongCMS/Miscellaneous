@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02documentReady.html</title>
+
+    <!--在這裡引用jQuery CDN提供的jQuery函式庫-->
+    <!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> -->
+
+    <!--在這裡引用Google CDN提供的jQuery函式庫-->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+
+    <!--在這裡引用下載的jQuery函式庫-->
+    <script src="../js/jquery-3.4.1.min.js"></script>
+
+    <script>
+        // ready是一個事件,等到DOMTree產生後會執行這個事件(和window.onload比較)
+
+        // Method 2
+        // jQuery(document).ready(function(){
+        //     $('h1').css('color', 'green');
+        // });
+
+        // Method 3 較好的寫法
+        $(document).ready(function(){
+            $('h1').css('color', 'red');
+        });
+
+        // Method 4
+        // $(function(){
+        //     $('h1').css('color', 'purple');
+        // });
+    </script> 
+</head>
+<body>
+
+    <h1>Write less, do more.</h1>
+
+    <script>
+        // Method 1 只能寫在tag產生後
+        // $('h1').css('color', 'blue');
+    </script>
+
+</body>
+</html>

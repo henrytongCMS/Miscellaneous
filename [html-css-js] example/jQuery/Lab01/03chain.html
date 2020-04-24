@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>03chain.html</title>    
+    <script src="../js/jquery-3.4.1.min.js"></script>
+    <script>
+
+        // $(document).ready(function(){ 
+        //     $('h1').css('color','green').css('background-color','').
+        //     mouseover(function(){
+        //         $(this).css({'color':'red','background-color':'lightgrey'});
+        //     }).
+        //     mouseout(function(){
+        //         $(this).css({'color':'green','backgroundColor':''});
+        //     });
+        // }); 
+
+        var styover = {'color':'red','background-color':'lightgrey'}; // css style
+        var styout = {'color':'green','backgroundColor':''}; // javascript style
+        $(document).ready(function(){ 
+            $('h1').css(styout).mouseover(over).mouseout(out);
+            function over(){$(this).css(styover);}
+            function out(){$(this).css(styout);}
+        });   
+
+    </script>
+</head>
+<body>
+    <h1>write less, do more 1</h1>
+    <h1>write less, do more 2</h1>
+    <h1>write less, do more 3</h1>
+    <h1>write less, do more 4</h1>
+    <h1>write less, do more 5</h1>
+</body>
+</html>

@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>07formObject.html</title>
+
+</head>
+<body>
+    <form action="http://192.168.39.55:8080/get.jsp" method="get">
+            name:<input type="text" name="txtName" id="idName" /> <span id="idsp"></span>
+            <br/>
+			<input type="checkbox" name="hobby" checked="checked" value="reading"/>reading
+			<input type="checkbox" name="hobby" checked="checked" value="game"/>game
+			<input type="checkbox" name="hobby" checked="checked" value="sleep"/>sleep
+			<br/>
+            <input type="submit" value="send" />	
+            <input id="idbutton" type="button" value="check" />
+            <input id="idreset" type="button" value="reset" />
+			<input id="idsubmit" type="button" value="submit" />
+	</form>
+	
+    <script> 
+
+        document.getElementById("idbutton").onclick = checkf;
+        document.getElementById("idreset").onclick = resetf;
+        document.getElementById("idsubmit").onclick = submitf;
+
+        function checkf(){
+            let theName = document.getElementsByName("txtName")[0].value;
+            let eles = document.forms[0].elements;    
+            for(let ele of eles){
+                if(ele.checked) alert(ele.value);
+            }
+        }
+
+        function resetf(){
+            document.forms[0].reset();
+        }
+
+        function submitf(){
+            if(document.getElementById("idName").value == "")
+                document.getElementById("idsp").innerHTML = "Not blank";
+            else
+                document.forms[0].submit();
+        }
+
+    </script>	
+</body>
+</html>

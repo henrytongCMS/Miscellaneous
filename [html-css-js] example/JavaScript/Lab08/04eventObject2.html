@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>05eventObject.html</title>
+</head>
+<body>
+
+    <!--HTML屬性事件處理程序-->
+    <!-- IE -->
+    <input type="button" id="idmouse1" value="HTML屬性事件(IE)" onmousedown="mouseDown();" />
+    <!-- Firefox-->
+    <input type="button" id="idmouse1" value="HTML屬性事件(Firefox)" onmousedown="mouseDown(event);" />
+    
+    <script>
+
+        function mouseDown(nsevent){
+
+            alert((nsevent||event).type);
+            alert((nsevent||event).button);
+
+        }
+       
+    </script>
+
+</body>
+</html>

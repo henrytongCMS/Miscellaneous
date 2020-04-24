@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>05eventObjectKeyborad.html</title>
+    
+</head>
+<body> 
+
+    <!--JavaScript屬性事件處理程序-->    
+    <input type="button" id="idbut" value="座標" />
+
+    <script>
+
+        // JavaScript屬性事件處理程序(IE9以上)座標屬性            
+
+        function CoordXY(nsevent){
+
+            let myevent = nsevent || window.event;
+            alert(`screenX = ${myevent.screenX}\nclientX = ${myevent.clientX}\noffsetX = ${myevent.offsetX}`);
+
+        }  
+
+        document.getElementById("idbut").onclick = CoordXY;  //座標coordinate 
+
+    </script>
+</body>
+</html>

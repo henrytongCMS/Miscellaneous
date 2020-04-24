@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02focusblur.html</title>
+    <script src="../js/jquery-3.4.1.min.js"></script>
+    <script>
+        $(function(){
+            $("input").focus(function(){
+                    $(this).css("background-color","yellow");
+                }).blur(function(){
+                    $(this).css("background-color","pink");
+                });
+        });
+    </script>
+</head>
+<body>
+   <label>Name:</label> 
+   <input type="text" id="idName" placeholder="please input name" ><br>
+   <label>Password:</label>
+   <input type="text" id="idPwd" placeholder="please input password" ><br>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>06contentSelector.html</title>
+    <style type="text/css">
+         fieldset{
+            width:500px;
+        }        			
+    </style>
+    <script src="../js/jquery-3.4.1.min.js"></script>
+    <script>
+        $(function(){
+            $("#btn1").click(function(){                 
+                $("div:contains('images')").css("border","double blue 3px");                
+            });
+
+            $("#btn2").click(function(){                
+                $("p:empty").css("border","dotted green 3px");                
+            });
+
+            $("#btn3").click(function(){               
+                $("div:has(img)").css("background-color","lime");
+            });
+
+            $("#btn4").click(function(){   
+                // $("label:parent").css("background-color","yellow");            
+                $("div:parent").css("background-color","fuchsia");
+                // $("img:parent").css("border","2px fuchsia solid"); // <img>不是成對標籤所以無效              
+            });                                    
+        });
+    </script>       
+</head>
+<body>
+    <fieldset id="domSampleFieldset"  >
+        <legend>DOM Sample</legend>
+        
+            <div><label>Some images:</label></div>
+            <div>
+                <p>
+                    <img src="images/image1.jpg" id="hibiscus" alt="Hibiscus"/>                    
+                    <img src="images/image2.jpg" id="littleBear" title="A dog named Little Bear" alt=""/>
+                    <img src="images/image3.jpg" id="verbena" alt="Verbena"/>
+                    <img src="images/image4.jpg" id="cozmo" title="A puppy named Cozmo" alt=""/>
+                    <img src="images/image5.jpg" id="tigerLily" alt="Tiger Lily"/>
+                    <img src="images/image6.jpg" id="coffeePot" alt=""/>
+                </p>
+            </div>
+            <p>this is paragraph</p>
+            <p id="idp"></p>
+            <br>            
+    </fieldset>   
+    <hr>
+
+    <input type="button" id="btn1" value=":contains()">
+    <input type="button" id="btn2" value=":empty">
+    <input type="button" id="btn3" value=":has()">
+    <input type="button" id="btn4" value=":parent">   
+</body>
+</html>

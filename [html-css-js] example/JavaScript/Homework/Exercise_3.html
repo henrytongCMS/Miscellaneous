@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Exercise_3.html</title>     
+</head>
+<body>
+
+    <img id="1" class="s" src="Images/star.gif" />
+    <img id="2" class="s" src="Images/star.gif" />
+    <img id="3" class="s" src="Images/star.gif" />
+    <img id="4" class="s" src="Images/star.gif" />
+    <img id="5" class="s" src="Images/star.gif" />
+
+    <br><br> <span id="spname"></span>
+    
+    <script>      
+
+        // let stars = document.getElementsByTagName("img");
+        let stars = document.querySelectorAll("img.s");
+        let clicked = false;
+
+        for(let star of stars){
+            star.onmouseover = mouseOver;
+            star.onmouseout = mouseOut;
+            star.onclick = mouseClick;
+        }
+
+        function mouseOver(){
+
+            if(clicked) return;
+
+            let n = parseInt(this.id);
+            document.getElementById("spname").innerHTML = `打分中... ${n}`;
+
+            while(n >= 1){
+                stars[n-1].src = "Images/chngstar.gif";
+                n--;
+            }
+
+        }
+
+        function mouseOut(){
+
+            if(clicked) return;
+ 
+            let n = parseInt(this.id);
+            document.getElementById("spname").innerHTML = "";
+
+            while(n >= 1){
+                stars[n-1].src = "Images/star.gif";
+                n--;
+            }
+            
+        }
+
+        function mouseClick(){
+
+            let n = parseInt(this.id);
+            document.getElementById("spname").innerHTML = `你給 ${n} 顆星`;
+            clicked = true;
+
+        }
+
+    </script>  
+      
+</body>
+</html>

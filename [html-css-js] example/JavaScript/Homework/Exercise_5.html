@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">    
+    <title>Exercise_5.html</title>
+    <style>
+        h1{
+            font-family: Arial;
+            margin: 10px;
+        }
+        select{
+            width: 80px;
+        }
+        .box{
+            width: 1100px;
+            font-size: larger;
+        }
+        .selectbox{
+            width: 500px;
+            height: 250px;
+            padding: 5px 20px;
+            border: 3px solid orange;
+            float: left;
+        }
+        .infobox{
+            width: 500px;
+            height: 250px;
+            padding: 5px 20px;
+            border: 3px solid orange;
+            float: right;
+        }
+        .button{
+            width: 80px;
+        }
+    </style> 
+</head>
+<body>
+
+    <div class="box">
+        <div class="selectbox">
+            <h1>Welcome</h1><hr>
+            <select id="idSelectYear"></select><label>&nbsp;年&nbsp;</label>
+            <select id="idSelectMonth"></select><label>&nbsp;月&nbsp;</label>
+            <select id="idSelectDay"></select><label>&nbsp;日&nbsp;</label>
+            <input type="button" class="button" value="重設" onclick="clearDate();" />
+        </div>  
+        <div class=infobox>
+            <h1>Information</h1><hr>
+            <label>您選擇的日期是&nbsp;&nbsp;</label><span id="idsp"></span>
+        </div>
+    </div>
+
+    <script>  
+
+        document.getElementById("idSelectYear").onchange = addDate;
+        document.getElementById("idSelectMonth").onchange = addDate;
+        document.getElementById("idSelectDay").onchange = getDate;
+
+        for(let i=2010; i<=2020; i++){
+
+            let option = document.createElement("option");
+            option.setAttribute("value", i);
+            let optiontxt = document.createTextNode(i);
+            option.appendChild(optiontxt);
+            document.getElementById("idSelectYear").appendChild(option);
+
+        }
+
+        for(let i=1; i<=12; i++){
+
+            let option = document.createElement("option");
+            option.setAttribute("value", i);
+            let optiontxt = document.createTextNode(i);
+            option.appendChild(optiontxt);
+            document.getElementById("idSelectMonth").appendChild(option);
+
+        }
+
+        let myYear, myMonth, myDay;
+
+        function addDate(){
+
+            myYear = document.getElementById("idSelectYear").value;
+            myMonth = document.getElementById("idSelectMonth").value;
+
+            let myDate = new Date(myYear, myMonth, 0);
+            let thisMonthLastDay = myDate.getDate();
+            
+  
+            document.getElementById("idSelectDay").options.length = null;
+
+            for(let i=1; i<=thisMonthLastDay; i++){
+
+                let option = document.createElement("option");
+                option.setAttribute("value", i);
+                let optiontxt = document.createTextNode(i);
+                option.appendChild(optiontxt);
+                document.getElementById("idSelectDay").appendChild(option);
+            
+            }
+        }
+
+        function getDate(){
+            
+            myDay = document.getElementById("idSelectDay").value;
+            document.getElementById("idsp").innerHTML = `${myYear}&nbsp;&nbsp;年&nbsp;&nbsp;${myMonth}&nbsp;&nbsp;月&nbsp;&nbsp;${myDay}&nbsp;&nbsp;日`;
+            
+        }
+
+        function clearDate(){
+
+            document.getElementById("idSelectYear").selectedIndex = "0";
+            document.getElementById("idSelectMonth").selectedIndex = "0";
+            document.getElementById("idSelectDay").options.length = 0;
+            document.getElementById("idsp").innerHTML = "";
+
+        }
+
+    </script>
+
+</body>
+</html>

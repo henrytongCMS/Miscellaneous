@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>02setclock.html</title>	       
+	</head>
+
+<body>
+
+    <img alt="" id="pich1" /><img alt="" id="pich2" />:<img alt="" id="picm1" /><img alt="" id="picm2" />:<img alt="" id="pics1" /><img alt="" id="pics2" />
+    
+    <script>
+ 
+        function setClock(){
+
+            //建立日期
+            let mydate = new Date();
+
+            //取得秒數，分割為兩位數
+            h1 = parseInt(mydate.getHours()/10);
+            h2 = mydate.getHours()%10;
+            m1 = parseInt(mydate.getMinutes()/10);
+            m2 = mydate.getMinutes()%10;
+            s1 = parseInt(mydate.getSeconds()/10);
+            s2 = mydate.getSeconds()%10;
+
+            //顯示圖片，對應秒數
+            document.getElementById("pich1").src = `WinImages/${h1}.gif`;
+            document.getElementById("pich2").src = `WinImages/${h2}.gif`;
+            document.getElementById("picm1").src = `WinImages/${m1}.gif`;
+            document.getElementById("picm2").src = `WinImages/${m2}.gif`;
+            document.getElementById("pics1").src = `WinImages/${s1}.gif`;
+            document.getElementById("pics2").src = `WinImages/${s2}.gif`;
+
+        }
+
+        setClock(); // 立即執行
+        setInterval(setClock, 1000);
+        
+    </script>
+
+</body>
+</html>

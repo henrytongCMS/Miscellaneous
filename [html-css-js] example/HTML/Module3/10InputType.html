@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>10InputType</title>
+    <style>
+        fieldset{
+            width: 500px;
+            margin: 15px;
+            border: 1px solid #acd6ff;
+            border-radius: 15px;
+        }
+        .general{
+            width: 450px;
+            margin: 5px;
+            padding-bottom: 10px;
+        }
+        .submit{
+            width: 450px;
+            margin: 20px;
+            font-size: larger;
+            text-align: center;
+        }
+        .title{
+            width: 100px;
+            float: left;
+            text-align: left;
+            padding-right: 3px;
+        }
+    </style>
+</head>
+<body>
+    <form action="#" method="get" enctype="multipart/form-data">
+        <fieldset>
+            <div class="general">
+                <label class="title"> Even number: </label>
+                <input type="number" name="even" min="2" max="20" step="2">
+            </div>
+            <div class="general">
+                <label class="title"> Range: </label>
+                <input type="range" name="range" min="1" max="10">
+            </div>
+            <div class="general">
+                <label class="title"> Color: </label>
+                <input type="color" name="color">
+            </div>
+            <div class="general">
+                <label class="title"> Date: </label>
+                <input type="date" name="date">
+            </div>
+            <div class="general">
+                <label class="title"> Email: </label>
+                <input type="email" name="email">
+            </div>
+            <div class="general">
+                <label class="title"> Search: </label>
+                <input type="search" name="search">
+            </div>
+            <div class="general">
+                <label class="title"> URL List: </label>
+                <input type="url" name="url" list="urls">
+                <datalist id="urls">
+                    <option value="http://www.google.com.tw"></option>
+                    <option value="http://www.pchome.com.tw"></option>
+                    <option value="http://iiiedu.org.tw"></option>
+                </datalist>
+            </div>
+            <div class="submit">
+                <input type="submit" value="Submit">
+                <input type="reset" value="Reset">
+            </div>    
+        </fieldset>
+    </form>
+</body>
+</html>

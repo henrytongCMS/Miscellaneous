@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>06CssManipulation2.html</title>
+    <style>   
+       .s1{
+               color: orange;
+                   text-decoration: underline;
+                   border: 1px red solid;
+                   width: 400px;
+                   text-align: center;
+                   background-color:green;
+           } 
+         
+        .s2{
+               color: green;
+                   text-decoration: none;
+                   border: 3px red double;
+                   width: 400px;
+                   text-align: center;
+                   background-color:red;
+           }  
+            
+               
+       </style>
+        <script src="../js/jquery-3.4.1.min.js"></script>
+        <script>
+            $(function(){
+                $("h1").addClass("s1").hover(over,out);
+
+                function over(){
+                    $(this).removeClass("s1").addClass("s2");                    
+                }
+                function out(){
+                    $(this).removeClass("s2").addClass("s1");                   
+                }
+
+                $('#buttonToggle').click(function(){
+                    var theH=$('#myH');
+                    // if(theH.hasClass('s1'))
+                    //     theH.removeClass('s1').addClass('s2');
+                    // else
+                    //     theH.removeClass('s2').addClass('s1');
+                    // above if-else is equal to the next line
+                    theH.toggleClass('s2');
+                });
+                
+            });
+        </script>
+</head>
+<body>
+    <input type="button" value="Toggle" id="buttonToggle" />
+    <h1 id="myH">write less, do more</h1>
+    <h1>write less, do more</h1>
+    <h1>write less, do more</h1>
+    <h1>write less, do more</h1>
+    <h1>write less, do more</h1>
+    <h1>write less, do more</h1>
+    
+</body>
+</html>

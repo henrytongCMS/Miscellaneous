@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>02Datepicker.html</title>
+  <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> -->
+  <link rel="stylesheet" href="themes/cupertino/jquery-ui.min.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+
+  <script src="../js/jquery-3.4.1.min.js"></script>
+  <script src="../js/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#datepicker" ).datepicker({
+      // showOn: "button",
+      // buttonImage: "images/calendar.jpg",           
+      // buttonImageOnly: true,
+      // buttonText: "請選擇日期",
+      showButtonPanel: true
+      // appendText: "(yyyy-mm-dd)",
+      // dateFormat: "yy-mm-dd"
+    });
+  } );
+  </script>
+</head>
+<body>
+ 
+<p>Date: <input type="text" id="datepicker"></p>
+ 
+ 
+</body>
+</html>

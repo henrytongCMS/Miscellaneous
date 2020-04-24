@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>02eventHandlerMouseoverout.html</title>     
+</head>
+<body>
+    <img id="idimg" src="Images/star.gif" />
+    
+    <script>       
+        document.getElementById("idimg").onmouseover = mouseover;  //事件繫結，滑鼠滑入
+        document.getElementById("idimg").onmouseout = mouseout;    //事件繫結，滑鼠滑出    
+
+        function mouseover(){
+            this.src = "Images/chngstar.gif";
+        }
+
+        function mouseout(){
+            this.src = "Images/star.gif";
+        }
+    </script>    
+</body>
+</html>

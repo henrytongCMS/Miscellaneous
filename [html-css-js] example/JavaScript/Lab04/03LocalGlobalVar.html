@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>03LocalGlobalVar.html</title>
+	</head>
+
+	<body>	
+	    <script>
+
+            //廣域(全域)變數
+			// var a = 100;
+    
+            // //函式宣告定義
+			// function f(){
+			// 	var a = 10;
+			// 	document.write(`a in f(): ${a}<br>`);
+
+			// 	for(let a=1; a<5; a++){
+			// 		document.write(`a in for: ${a}<br>`);
+			// 	}
+
+			// }
+
+			// //呼叫函式
+			// document.write(`a before calling f(): ${a}<br>`);
+			// f();
+			// document.write(`a after calling f(): ${a}<br>`);
+
+			//================================================
+
+            //廣域(全域)變數
+			var a = 100;
+    
+            //函式宣告定義
+			function f(){
+				a = 10;
+				document.write(`a in f(): ${a}<br>`);
+			}
+
+			//呼叫函式
+			document.write(`a before calling f(): ${a}<br>`);
+			f();
+			document.write(`a after calling f(): ${a}<br>`);
+
+        </script>   	
+	</body>
+</html>

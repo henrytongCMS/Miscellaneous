@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>01varDeclarationTypeTransfer.html</title>        
+	</head>
+
+	<body>	
+		<script>
+
+			// 1.var變數宣告
+			var a;
+			a = 10;
+			console.log("a = " + a + ", typeof a = " + typeof a + "<br>");
+
+			// 2.變數宣告時可以同時賦予初始值
+			var b = 20;
+			console.log("b = " + b + ", typeof b = " + typeof b + "<br>");
+
+			// 3.不宣告變數，直接賦予初始值
+			c = 30
+			console.log("c = " + c + ", typeof c = " + typeof c + "<br>");
+
+			// 4.let變數宣告
+			if(true){
+				var aa = 20;
+				var aa = 30; // OK
+				let bb = 30;
+				// let bb = 40; // error
+				console.log("bb = " + bb + "<br>");
+			}
+			console.log("aa = " + aa  + "<br>");
+			// document.write(bb); // error
+
+			// 5.const變數宣告
+			const PI = 3.14159;
+			// PI = 3.1416; // error
+
+			// 6.樣板字面值(Template Literals)
+			console.log(`a = ${a}, typeof a = ${typeof a} <br>`);
+
+			// 7.布林變數
+			isNum = true;
+			let summ = isNum + 1;
+			if(summ){
+				window.alert("isTrue");
+				window.alert(summ);
+			}else{
+				window.alert("isFalse");
+			}
+
+			// 8.null
+			let n = null;
+			console.log(`n = ${n}, typeof n = ${typeof n} <br>`);
+
+			// 9.如果沒有初始值，JavaScript會自動將變數的值初始化為undefined(預設值 default value)
+			let u;
+			console.log(`u = ${u}, typeof u = ${typeof u} <br>`);
+
+			// 10.建立物件，語法一
+			let person = new Object();
+			person.Name = "Mary";
+			person.Age = 22;
+			console.log(person);
+			console.log(`${person.Name} is ${person.Age} years old.`);
+
+			// 11.建立物件，語法二
+			let car = {brand:"Audi", "max speed":300};
+			console.log(car);
+			console.log(`The max speed of this ${car.brand} car is ${car["max speed"]} km/h.`);
+
+			// 12.資料型別的轉換
+			console.log(`parseInt("624.73") = ${parseInt("624.73")}`);
+			console.log(`parseInt("62d47.73") = ${parseInt("62d47.73")}`);
+
+	    </script>
+	</body>
+</html>

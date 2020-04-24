@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>05eventObjectKeyborad.html</title>
+    
+</head>
+<body>    
+
+    <script> 
+    
+        //鍵盤事件繫結
+        document.onkeydown=keyDown;  //大寫鍵，控制鍵 
+        // document.onkeypress=keyDown;  //大小寫鍵       
+        // function keyDown(nsevent) {  //firefox,IE9以上,chrome
+        //     let theEvent = nsevent || window.event;
+        //     alert(theEvent.which);
+        //     if (theEvent.altKey) alert("ALT");
+        //     if (theEvent.ctrlKey) alert("CTRL");
+        //     if (theEvent.shiftKey) alert("SHIFT");
+        // }
+
+        function keyDown() {  //firefox,IE,chrome           
+            alert(event.which);
+            if (event.altKey) alert("ALT");
+            if (event.ctrlKey) alert("CTRL");
+            if (event.shiftKey) alert("SHIFT");
+        }
+         
+    </script>
+</body>
+</html>

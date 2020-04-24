@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Login</title>
+<script src="js/simpleCaptcha.js"></script>
+</head>
+<body onload="createCaptcha()">
+	<form id="form" method="post" onsubmit="validateCaptcha()">
+		Name: <input type="text" name="name"><br>
+		Password: <input type="password" name="password"><br>
+		<div id="captcha"> </div>
+		Verification code: <input type="text" id="cpatchaTextBox"><br>
+		<input type="submit" value="login">
+		<a href="forget.html">Forget password</a>
+	</form>
+</body>
+</html>

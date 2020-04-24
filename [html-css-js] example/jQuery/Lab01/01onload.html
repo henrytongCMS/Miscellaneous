@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>01load.html</title>
+    <script src="../js/jquery-3.4.1.min.js"></script>
+    <script>
+
+        // window.onload=function(){
+        //     alert("alert1");
+        // }
+        // window.onload=function(){
+        //     alert("alert2");
+        // }
+
+        // 以下3種方法都不會2覆蓋1,原理相同
+
+        // window.addEventListener("load",function(){
+        //     alert("alert1");
+        // });
+        // window.addEventListener("load",function(){
+        //     alert("alert2");
+        // });
+
+
+        // document.addEventListener("DOMContentLoaded",function(){
+        //     alert("alert1");
+        // });
+        // document.addEventListener("DOMContentLoaded",function(){
+        //     alert("alert2");
+        // });
+
+
+        $(document).ready(function(){
+            alert("alert1");
+        });
+        $(document).ready(function(){
+            alert("alert2");
+        });
+
+    </script>
+</head>
+<body>
+</body>
+</html>

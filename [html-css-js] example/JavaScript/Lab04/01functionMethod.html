@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>01functionMethod.html</title>
+</head>
+<body>
+    <script>
+
+        // let x = parseFloat(window.prompt("Please input value x:"));
+        // let y = parseFloat(window.prompt("Please input value y:"));
+        x=1;y=2;
+
+        //==========定義函式==================
+        //方法一函式宣告，定義帶參數的函式
+        //呼叫帶參數的函式
+        //JavaScript沒有規定function的參數及呼叫function時給予的參數數量必須要一致
+        //少掉的參數為undefined，而多的參數會被忽略
+
+        function decFunc(x, y){
+            return x + y;
+        }
+        document.write(`Function declaration: ${x} + ${y} = ${decFunc(x, y)} <br>`);
+
+
+        //==========定義函式==================
+        //方法二函式字面值
+
+        let litFunc = function(x, y){
+            return x - y;
+        }
+        document.write(`Function literal: ${x} - ${y} = ${litFunc(x, y)} <br>`);
+
+
+        //==========定義函式==================
+        //方法三箭頭函式(arrow function)
+
+        let arrowFunc = (x, y) => x * y;
+        document.write(`Arrow function: ${x} * ${y} = ${arrowFunc(x, y)} <br>`);
+
+        //如果statement 只有一行，return 和 {} 可省略
+            // let f=(x,y)=>(x+y);
+        //只有一個參數，()可省略 
+            // let f = x => 10*x; 
+            // let f = () => true;
+
+
+        //列印函數內容
+        document.write(`decFunc = ${decFunc} <br>`);
+        decFunc = litFunc;
+        document.write(`decFunc = ${decFunc} <br>`);
+
+
+        //==========方法製作==================
+        //定義物件
+
+        let car = { brand: "Audi", "max speed": 300 }
+
+        //定義物件方法一(使用函式字面值)
+
+        car.print1 = function(){
+            return (`Brand: ${this.brand}, Max speed: ${this["max speed"]} km/h`);
+        }
+
+        //定義物件方法二(使用函式宣告)
+
+        function myprint(){
+            return (`Brand: ${this.brand}; Max speed: ${this["max speed"]} km/h`);
+        }
+        car.print2 = myprint;
+
+        //方法呼叫      
+        document.write(`${car.print1()} <br>`);
+        document.write(`${car.print2()} <br>`);
+
+    </script>
+</body>
+</html>

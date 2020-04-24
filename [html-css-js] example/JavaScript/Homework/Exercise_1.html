@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>9x9 table</title>
+    <style>
+        
+        #ninetable{
+            width: 800px;
+            border: 2px solid blue;
+            border-collapse: collapse;
+        }
+    
+        td{
+            border-right: 2px solid blue;
+            border-bottom: 0px;
+            color: maroon;
+            padding: 4px;
+            text-align: center;
+            vertical-align: center;
+        }
+
+        tr{
+            background-color: lightskyblue;
+        }
+    
+    </style>
+</head>
+<body>
+
+    <table id="ninetable"></table>
+
+    <script>
+
+        var myTable = document.getElementById("ninetable");
+        var row = "";
+
+        for (let i = 1; i < 10; i++){
+            row += "<tr>";
+            for (let j = 1; j < 10; j++){
+                row += "<td>" + j + "*" + i + "=" + (j*i) + "</td>";
+            }
+            row += "</tr>";
+        }
+
+        myTable.innerHTML = row;
+
+    </script>
+
+</body>
+</html>

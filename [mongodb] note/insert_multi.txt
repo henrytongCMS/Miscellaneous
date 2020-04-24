@@ -1,0 +1,237 @@
+
+# 啟動資料庫程式
+
+cd C:\Program Files\MongoDB\Server\3.0\bin
+mongod --dbpath C:\Users\User\Desktop\AIOT_HENRY\MongoDB
+
+--------------------------------------------------------------------------------------
+
+# 用陣列一次新增多筆資料
+
+var user1 = {
+	name : "Mark",
+	age : 18,
+	bmi : 10
+},
+count = 1000,
+users = [];
+
+for (var i=0;i<count;i++){
+	users.push(user1);
+}
+
+db.user.insert(users,{ordered:false})  
+
+--------------------------------------------------------------------------------------
+
+# 另外一種新增資料的方法
+
+var bulk=db.user.initializeOrderedBulkOp();
+bulk.insert({name:'mark'});
+bulk.insert({name:'hoho'});
+bulk.execute();
+
+--------------------------------------------------------------------------------------
+
+# 更新1筆資料
+
+db.user.insert({'name':'mark', 'age':23});
+db.user.insert({'name':'mark', 'age':23});
+db.user.insert({'name':'mark', 'age':23});
+db.user.insert({'name':'jj', 'age':23});
+db.user.insert({'name':'stv', 'age':23});
+
+db.user.update({'name':'mark'},{'name':'mark', 'age':18})  
+
+--------------------------------------------------------------------------------------
+
+# 更新多筆資料
+
+db.user.update({'name':'mark'},{'$set':{'age':45}},{multi:true})
+
+--------------------------------------------------------------------------------------
+
+# 全部人的年齡加一
+
+db.user.update({},{'$inc':{'age':1}},{multi:true})
+
+--------------------------------------------------------------------------------------
+
+# 陣列資料, 增加一筆到陣列裡
+
+db.user.insert({'name':'mark', 'fans':['steven','crisis','stanley']})
+db.user.update({'name':'mark'},{$push:{'fans':'jack'}})
+
+--------------------------------------------------------------------------------------
+
+# 增加多筆到陣列裡
+
+db.user.update({'name':'mark'},{$push:{'fans':{'$each':['inadry','max']}}})
+
+--------------------------------------------------------------------------------------
+
+# 限制陣列大小到(-:最後 / +:最前)5個
+
+db.user.update({'name':'mark'},{$push:{'fans':{'$each':['sally','jacky'], '$slice':-5}}})
+
+--------------------------------------------------------------------------------------
+
+# 增加不重複的資料到陣列裡
+
+db.user.update({'name':'mark'},{$addToSet:{'fans':{'$each':['john','sally']}}})
+
+--------------------------------------------------------------------------------------
+
+# 刪除(+:最後 / -:最前)1筆資料
+
+db.user.update({'name':'mark'},{$pop:{'fans':1}})
+
+--------------------------------------------------------------------------------------
+
+# 刪除指定資料
+
+db.user.update({'name':'mark'},{$pull:{'fans':'jacky'}})
+
+--------------------------------------------------------------------------------------
+
+# 刪除文件(不會刪除主鍵)(相同的預設一起刪除)
+
+db.user.remove({'name':'mark'})
+
+--------------------------------------------------------------------------------------
+
+#刪除文件(會刪除主鍵)
+
+db.user.drop()
+
+--------------------------------------------------------------------------------------
+
+db.user.insert([{'id':'1', 'name':'marker', 'age':25, 'fans':100, 'likes':1000},
+{'id':'2', 'name':'steven', 'age':35, 'fans':220, 'likes':50},
+{'id':'3', 'name':'stanly', 'age':30, 'fans':120, 'likes':33},
+{'id':'4', 'name':'maxery', 'age':60, 'fans':500, 'likes':1000},
+{'id':'5', 'name':'jacker', 'age':30, 'fans':130, 'likes':1300},
+{'id':'6', 'name':'crisis', 'age':30, 'fans':130, 'likes':100},
+{'id':'7', 'name':'laundy', 'age':25, 'fans':130, 'likes':100}])
+
+
+# age >= 30 and age < 60 and fans >= 200
+
+db.user.find({'age':{$gte:30, $lt:60}, 'fans':{$gte:200}})
+db.user.find({$and:[{'age':{$gte:30, $lt:60}},{'fans':{$gte:200}}]})
+
+# fans <= 100 or likes < 100
+
+db.user.find({$or:[{'fans':{$lte:100}},{'likes':{$lt:100}}]})
+
+# age in [25, 60]
+
+db.user.find({'age':{$in:[25,60]}})
+
+# age not in [25, 60] (give me id only)
+
+db.user.find({'age':{$nin:[25,60]}},{'id':1})
+
+# likes <= 100 (not gt)
+
+db.user.find({'likes':{$not:{$gt:100}}})
+
+# nor (fans < 100, likes < 100)
+
+db.user.find({$nor:[{'fans':{$lt:100}},{'likes':{$lt:100}}]})
+
+--------------------------------------------------------------------------------------
+
+db.user.insert([
+{"id":"1","name":"mark",
+	"fans":["steven","stanly","max"],
+	"x":[10,20,30]},
+{"id":"2","name":"steven",
+	"fans":["max","stanly"],
+	"x":[5,6,30]},
+{"id":"3","name":"stanly",
+	"fans":["steven","max"],
+	"x":[15,6,30,40]},
+{"id":"4","name":"max",
+	"fans":["steven","stanly"],
+	"x":[15,26,330,41,1]}
+])
+
+# 陣列裡找到符合關鍵字的
+
+db.user.find({fans:{$all:['steven','max']}})
+
+# 找陣列大小是3的
+
+db.user.find({fans:{$size:3}})
+
+# 找到指定搜尋條件的第幾個元素
+
+db.user.find({name:'mark'},{fans:{$slice:1}})
+
+# 找到x陣列裡至少一個值大於30小於100的
+
+db.user.find({x:{$gt:30,$lt:100}})
+
+# 找到name為s開頭的
+
+db.user.find({name:/^s/})
+
+# 找到name為x結尾的
+
+db.user.find({name:/x$/})
+
+# 找到name裡有a字母的
+
+db.user.find({name:/a/})
+
+--------------------------------------------------------------------------------------
+
+for(var i=0;i<1000;i++){
+    db.user.insert({x:i})
+}
+
+# 總共幾筆資料
+
+db.user.find().count()
+
+# 只要前面10筆資料
+
+db.user.find().limit(10)
+
+# 忽略前面10筆資料
+
+db.user.find().skip(10)
+
+# 忽略前5筆, 只要50筆, 再進行排序(-1的話從最後開始)
+
+db.user.find().skip(5).limit(50).sort({x:1})
+
+--------------------------------------------------------------------------------------
+
+# 建立x欄位的索引(然後用find()速度會很快)
+
+db.user.ensureIndex({x:1})
+
+# 看user這個collection所有的索引
+
+db.user.getIndexes()
+
+# 殺掉x欄位的索引
+
+db.user.dropIndex('x_1')
+
+# 殺掉所有的索引
+
+db.user.dropIndexes()
+
+--------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+

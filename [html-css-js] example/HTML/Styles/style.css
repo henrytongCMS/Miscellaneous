@@ -1,0 +1,18 @@
+p{
+    font-size: xx-large; 
+    font-style: italic;
+    color: #ff0080
+}
+
+.class1{
+    background-color: aqua;
+}
+
+h2.class2{
+    background-color: blanchedalmond;
+}
+
+#id1{
+    font-size: xx-large;
+    background-color: chocolate;
+}

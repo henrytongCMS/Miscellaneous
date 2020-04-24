@@ -1,0 +1,135 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>06arrayObject.html</title>
+</head>
+<body>
+
+    <div id="div1"></div>
+
+    <script>
+
+        /*
+        //建立陣列語法 1
+        let balls = new Array();
+        //alert(balls.length);
+        balls[0] = "basketball";
+        balls[1] = "baseball";
+        balls[2] = "tennis";
+        balls[3] = "volleyball";
+        balls[4] = 123;
+        //alert(balls.length);
+
+        //列印陣列語法 1
+        console.log(balls);
+
+        //建立陣列語法 2
+        let balls2 = new Array("tennis", "basketball", "baseball");
+        console.log(balls2);
+
+        //建立陣列語法 3
+        let balls3 = ["basketball", "baseball", "tennis"];
+
+        console.log(balls3);
+        console.log(`join('-') = ${balls3.join("-")}`);
+        console.log(`reverse().join('=>') = ${balls3.reverse().join("=>")}`);
+        console.log(`sort() = ${balls3.sort()}`);
+
+
+        //列印陣列語法 2 -- 使用 for loop
+        for(let i=0; i<balls3.length; i++){
+            console.log(`balls3[${i}] = ${balls3[i]}`);
+        }
+
+        //列印陣列語法 3 -- 使用 for of 
+        for(let value of balls3){
+            console.log(`${value}`);
+        }
+        */
+
+        var emp = {"employees":[
+                    {"name":"Tom","workYears":3,"salary":35000},
+                     {"name":"Jack","workYears":5,"salary":40000},
+                     {"name":"Mary","workYears":7,"salary":45000}
+                    ]};
+
+        var myDiv = document.getElementById("div1");
+        var str = ""; 
+
+        for(var i=0;i<emp.employees.length;i++){ 
+
+            var name = emp.employees[i].name;
+            var workyear = emp.employees[i].workYears;
+            var salary = emp.employees[i].salary; 
+            str += "<li>" + name + ", ";
+            str += workyear + "," + salary + "</li>";   
+
+        }
+        
+        myDiv.innerHTML = "<ul>" + str + "</ul>";
+
+
+        //=====================================================================
+
+        /*
+        //二維陣列
+        let myDatas = new Array();
+        myDatas[0] = new Array("apple", "banana", "grape");
+        myDatas[1] = new Array("pork", "beef");
+
+        myDatas = [["apple", "banana", "grape"], ["pork", "beef"]];
+        console.log(myDatas[1][0]);  //pork
+        for (let i = 0, maxi = myDatas.length; i < maxi; i++) {
+            for (let j = 0, maxj = myDatas[i].length; j < maxj; j++) {
+                console.log(myDatas[i][j]);
+            }
+        }
+
+        //array = [value,value,value]
+        let names = ["Tom", "Jack", "Mary"];
+
+        //object {property:value,property:value}
+        let obj = { name: "Paul", age: 20 };
+        //    alert(obj.name);
+        //    alert(obj.age)
+
+        //JSON array + object
+        // let emps = [{},{},{}];
+        // let obj = {emps:[{},{},{}]}
+
+        let emps = [{ name: "Jack", age: 20 },
+                    { name: "Mary", age: 29 },
+                    { name: "Steve", age: 24 }];
+
+        //emps - array
+        //emps[1] - object
+        //emps[1].name - Mary
+        */
+
+        // let data = {
+        //     emps: [{ name: "Jack", age: 29, contact: { home: "02-12345678", cell: "0911222333" } },
+        //             { name: "Mary", age: 35, contact: { home: "02-33116745", cell: "0932112654" } },
+        //             { name: "Tom", age: 26, contact: { home: "02-54346666", cell: "0955832123" } }]
+        // };
+
+        // //讀取所有的name、age、home phone、cell phone的資料
+        // //data - object
+        // //data.emps - array
+        // //data.emps[0] - object
+        // //data.emps[0].name - Jack                 
+
+        // let str = "";
+        // // alert(data.emps.length);
+        // for (let i = 0; i < data.emps.length; i++) {
+        //     let name = data.emps[i].name;
+        //     let age = data.emps[i].age;
+        //     let home = data.emps[i].contact.home;
+        //     let cell = data.emps[i].contact.cell;
+        //     str =  name + ", "+age+","+home+","+cell;
+        //     console.log(str);                                               
+        // }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>01setTimeout.html</title>
+</head>
+<body>    
+	<input type="button" id="stop" value="停止轉向連結" />
+
+    <script>
+
+        document.getElementById("stop").onclick = stopf;
+        let t = window.setTimeout(gof, 5000);
+
+        function stopf() {
+            window.clearTimeout(t); // 停止計時器 
+            alert("OK");           
+        }
+
+        function gof(){
+            location.href = "http://taipei.iiiedu.org.tw";
+        }
+        
+    </script>
+
+</body>
+</html>

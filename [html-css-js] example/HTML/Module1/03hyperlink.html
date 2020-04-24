@@ -1,0 +1,56 @@
+<!DOCTYPE html>   
+<head>
+    <meta charset="UTF-8">
+    <title>03hyperlink</title>
+    <style>
+        a:link{
+            text-decoration: none
+        }
+        a:visited{
+            color:red
+        }
+        .link a:hover{
+            text-decoration: underline; 
+            color: green
+        }
+        .link a:active{
+            color: pink
+        }
+        *{
+            margin: 10px;
+        }
+        .img{
+            height: 200px; 
+            width: 300px;
+            border: 3px solid red;
+            padding: 2px
+        }
+    </style>
+</head>
+<body>
+    <a href="01first.html"> 01first.html </a> <br>
+    <a href="02list.html"> 02list.html </a> <br>
+    <a href="02list.html#bookmark1"> 02list.html#bookmark1 </a> <br>
+    <a href="http://tw.yahoo.com"> yahoo </a> <br>
+    <a href="https://www.momoshop.com.tw"> momoshop </a> <br>
+
+    <ul class="link">
+        <li> <a href="mailto:dummy@hotmail.com"> mail to me </a> </li>
+        <li> <a href="../Module2/04css.html"> module2/css </a> </li>
+    </ul>
+
+    <hr>
+
+    <figure>
+        <img class="img" src="../Images/flower.jpg" title="flower" alt="flower">
+        <figcaption> Caption: This is a flower. </figcaption>
+    </figure>
+
+    <hr>
+
+    <a href="https://www.theatlantic.com/science/archive/2017/10/the-secret-blue-halo-of-flowers/543228/">
+        <img class="img" src="../Images/flower.jpg" title="flower" alt="flower">
+    </a>
+
+</body>
+</html>

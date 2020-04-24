@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html lang="zh-tw">
+    <head>             
+	<title>05createOptionObject.html</title>    
+	</head>
+	<body>
+        <select id="idSelectMonth"></select>
+        
+        <script>           
+            for (i = 1; i <= 12; i++) {   //新增月 
+                let opt = document.createElement("option");
+                opt.setAttribute("value",i);
+                let optTxt=document.createTextNode(i);
+                opt.appendChild(optTxt);
+                // opt.value = i;
+                // opt.innerHTML = i;
+                document.getElementById('idSelectMonth').appendChild(opt);
+            }
+
+           
+        </script>
+	</body>
+</html>
+

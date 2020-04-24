@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html lang="zh-tw">
+    <head>             
+	<title>04addOption.html</title>
+    <script type="text/javascript">
+        window.onload = selectf;
+        function selectf() {
+            let objSelect = document.getElementById("idselect");
+            let optName,optValue;
+            
+            for (let i = 1; i <= 12; i++) {
+		optName++;
+                optValue++;
+                let objOption = new Option(optName, optValue);
+                objSelect.add(objOption, i);
+                
+            }
+        }
+        
+	</script>
+	</head>
+	<body>
+		<select id="idselect"></select>
+	</body>
+</html>
+

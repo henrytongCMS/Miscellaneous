@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>09selectorEach.html</title>   
+    <script src="../js/jquery-3.4.1.min.js"></script>
+    <script>
+        $(function(){
+
+            $("#btn1").click(function(){  
+                // console.log($('li'));                              
+                $("li").each(function(index,element){
+                    // console.log(element);  // javascript object
+                    // console.log($(element));  // jquery object
+                    // console.log($(element).text());
+
+                    //顯示index 及 $(this).text --> 讀取元素內容
+                    // console.log(index+":"+$(this).text());  // jquery text() method
+                    console.log(index+":"+element.innerHTML);  // javascript innerHTML property                      
+                });                  
+            });
+
+            $("#btn2").click(function(){
+                // array:
+                // let ary=["apple","orange","banana"];
+                // $.each(ary,function(index,value){
+                //     console.log(index+":"+value);
+                // });                     
+                
+                // selector:
+                // $.each($("li"),function(index,object){
+                //     console.log(index+":"+$(this).text());                                     
+                //     console.log(object);
+                // });
+            });
+
+            $("#btn3").click(function(){ 
+                // object:
+                let persons={name:"Jack",ID:"A123456789",age:28};
+                $.each(persons,function(index,value){
+                    // console.log(index+":"+value);
+                    // 在id為demo的p元素顯示,可使用append()方法:
+                    // $('#demo').append(index+":"+value+"<br>");
+                });
+               
+                // selector:              
+                $.each($("li"),function(index,object){
+                    // console.log(index+":"+$(this).text());                    
+                    // 在id為demo的p元素顯示,可使用append()方法:
+                    // $('#demo').append(index+":"+$(this).text()+"<br>");
+                    // console.log(object);
+                });             
+            });
+            
+        });
+    </script>
+</head>
+<body>
+    <h2>Drinks</h2>
+    <ul>
+        <li>Coffee</li>
+        <li>Juice</li>
+        <li>Tea</li>
+    </ul>
+    <p id="demo"></p>
+    <hr>
+    <input type="button" id="btn1" value="selector.each()">
+    <input type="button" id="btn2" value="jQury.each(array,function)">
+    <input type="button" id="btn3" value="jQuery.each(object,function)">
+</body>
+</html>
